@@ -1,0 +1,29 @@
+<link href="//fonts.googleapis.com/css?family=Bitter:400,700,400italic" rel="stylesheet" type="text/css">
+
+  <h3 id='title'>Google Fonts</h3>
+
+  <h1 class="bitter-font text-center">All security and no hacking makes Justin a dull boy.</h1>
+
+
+  <h3>This Page's Violations</h3>
+
+  <p>Well it's pretty simple, really. The above font is powered by the <a href="http://www.google.com/fonts">Google Fonts API</a>, which is an external resource that's not whitelisted in the policy.</p>
+
+  <p>There is one gotcha though:</p>
+
+  <p>Although the font CSS are loaded from <code>fonts.googleapis.com</code>, that CSS file loads the <em>actual</em> font files from <code>fonts.gstatic.com</code></p>
+
+  <h3>This Page's Solution</h3>
+
+  <p>To fix, you have to permit both the Google Font's CSS file, but also the domains its referenced fonts live</p>
+
+  <pre>// config/environment.js
+
+ENV.contentSecurityPolicy = {
+  'style-src': "'self' fonts.googleapis.com",
+  'font-src': "'self' fonts.gstatic.com",
+};</pre>
+
+  <p><em>"But Justim, why is it called <code>'unsafe-inline'</code> and not just <code>'inline'</code>?"</em>, you may ask. Well it's quite simple: the authors of CSP <strong>really</strong> didn't want you to permit inline stuff unless you know what you're doing.</p>
+
+  <p>An attacker is much <sup>much <sup> much</sup></sup> more likely to hit you with a persistant XSS on your webpage than in your CSS files. And you know it's bad practise to inline CSS styles, anyway, so you should never do this unless you're crazy</p>

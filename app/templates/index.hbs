@@ -1,0 +1,33 @@
+<h3>Justin, WTF am I looking at?</h3>
+
+<p>Open up your console! Notice anything? <strong>Yeah there's a boatload of errors!</strong></p>
+
+<div class="text-center">
+  <img src="errors.png" class="margin-auto" alt="Errors in console">
+</div>
+
+<p>As you navigate around the app you'll see different CSP violations. Check out each page to learn about the different policies in action.</p>
+
+<p><em>Yes, I know saying "CSP policies" is the same as saying "ATM machine" or "PIN number". Go away you wanker.</em></p>
+
+<h3>Ok, so I get my bearings, what is the app's CSP?</h3>
+
+<p>Great question! Here's a great answer:</p>
+
+<pre>Content-Security-Policy-Report-Only:
+  default-src 'none';
+  script-src  'self'
+              'unsafe-eval'
+              localhost:35729
+              0.0.0.0:35729;
+  font-src    'self';
+  connect-src 'self'
+              ws://localhost:35729
+              ws://0.0.0.0:35729;
+  img-src     'self';
+  style-src   'self';
+  media-src   'self';</pre>
+
+<p>Note that the sources on port <code>35729</code> are for the Livereload in this app, so don't get too confused! They can mostly be ignored for this tutorial</p>
+
+<p>The <code>'unsafe-eval'</code> business is to prevent warnings being generated when developing. Your app compiles down to code that uses <code>eval()</code> in development</p>

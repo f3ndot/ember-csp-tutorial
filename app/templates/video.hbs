@@ -1,0 +1,21 @@
+<h3 id='title'>YouTube Video</h3>
+
+<p>Check out FreshBooks' TV spot! Wow such plugging</p>
+
+<iframe width="853" height="480" src="//www.youtube.com/embed/ilpZM5RMNKE?showinfo=0&VQ=HD720" frameborder="0" allowfullscreen></iframe>
+
+<h3>This Page's Violation</h3>
+
+<p>The YouTube video is an iframe with a <code>src</code> of <code>www.youtube.com</code></p>
+
+<h3>This Page's Solution</h3>
+
+<p>Tell the app that YouTube iframes are A-OK:</p>
+
+<pre>// config/environment.js
+
+ENV.contentSecurityPolicy = {
+  'frame-src': "www.youtube.com",
+};</pre>
+
+<p>If you know you'll never embed your own app within itself, you can omit the <code>'self'</code> in the directive. This is true for every policy type, by the way</p>

@@ -1,0 +1,30 @@
+<h3 id='title'>About</h3>
+
+<p>This <em>absolutely <strong>beautiful &amp; stunning</strong></em> application was written by <a href="https://www.justinbull.ca">Justin A. S. Bull</a>. Here is a picture of the handsome fella:</p>
+
+<div style="text-align: center">
+  <img src="https://s.gravatar.com/avatar/d36bd9043f47f38990b0e5f622b314e2?s=200" class="img-circle" style="margin: auto" alt="Justin Bull" />
+</div>
+
+<h3>This Page's Violations</h3>
+
+<p>The image of Justin is loaded from <a href="https://www.gravatar.com">Gravatar</a>, so it violates the CSP directive: <code>"img-src 'self'"</code>.</p>
+
+<p>When a CSP directive is set to only <code>'self'</code>, its saying only the domain serving this app is permitted.</p>
+
+<p>What's worse is that this page is also using the <em>dreaded inline styling</em>. The policy <code>style-src: 'self';</code> does <strong>not</strong> include inline styling.
+
+<h3>This Page's Solution</h3>
+
+<p>To fix this particular example, you need to add the <code>s.gravatar.com</code> domain to the list of permitted domains and allow inline styling:</p>
+
+<pre>// config/environment.js
+
+ENV.contentSecurityPolicy = {
+  'img-src': "'self' s.gravatar.com",
+  'style-src': "'self' 'unsafe-inline'",
+};</pre>
+
+<p><em>"But Justim, why is it called <code>'unsafe-inline'</code> and not just <code>'inline'</code>?"</em>, you may ask. Well it's quite simple: the authors of CSP <strong>really</strong> didn't want you to permit inline stuff unless you know what you're doing.</p>
+
+<p>An attacker is much <sup>much <sup> much</sup></sup> more likely to hit you with a persistant XSS on your webpage than in your CSS files. And you know it's bad practise to inline CSS styles, anyway, so you should never do this unless you're crazy</p>
