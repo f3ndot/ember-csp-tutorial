@@ -1,0 +1,19 @@
+<h3 id='title'>Life Status Biznz</h3>
+
+Payload from my dead man sentry:
+
+<pre>{{prettyJSON}}</pre>
+
+<h3>This Page's Violations</h3>
+
+<p>This page's model is doing an AJAX call to a backend that lives on another host, <code>justinbull.ca</code>. This violates the <code>content-src: 'self';</code> policy.</p>
+
+<h3>This Page's Solution</h3>
+
+<p>To fix this particular example, you need to add the <code>justinbull.ca</code> domain to the list of permitted domains for AJAX requests:</p>
+
+<pre>// config/environment.js
+
+ENV.contentSecurityPolicy = {
+  'connect-src': "'self' justinbull.ca",
+};</pre>
