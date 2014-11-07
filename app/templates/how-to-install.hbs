@@ -1,0 +1,46 @@
+<h3 id='title'>How to Install Your Content Security Policy</h3>
+
+<p><em>Wow!</em> Now you're all set to protect your app against the world of nasty hackers.</p>
+
+<h3>Verify there are no more CSP violations</h3>
+
+<p>Once you've amended your <code>config/environment.js</code> file to whitelist all of your whitelisted domains, go through your app and run tests with console open.</p>
+
+<p>Don't see any more CSP errors in conosle? Sweet. Proceed to the next step</p>
+
+<h3>Copy the Ember CLI's generated CSP header</h3>
+
+<div class="text-center">
+  <img src="copy.gif" class="margin-auto" width="75%">
+</div>
+
+<p>Rename the header to <code>Content-Security-Policy</code> and prettify it if you wish.</p>
+
+<pre>Content-Security-Policy:
+  default-src 'none';
+  script-src  'self'
+              'unsafe-eval'
+              localhost:35729
+              0.0.0.0:35729;
+  font-src    'self'
+              fonts.gstatic.com;
+  connect-src 'self'
+              ws://localhost:35729
+              ws://0.0.0.0:35729
+              justinbull.ca;
+  img-src     'self'
+              s.gravatar.com;
+  style-src   'self'
+              'unsafe-inline'
+              fonts.googleapis.com;
+  media-src   'self';
+  frame-src   'self'
+              www.youtube.com;</pre>
+
+<h3>Put that shit in yo' web server, yo!</h3>
+
+<p>Whether Apache, Nginx, Unicorn, Express, whoever! Make sure that your webserver sends the above header with every request to it.</p>
+
+<h3>Bonus Points: Report URI</h3>
+
+<p>Worried you fucked up? Does it keep you awake at night? Learn about the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_CSP_violation_reports">Report URI directives in CSP</a> to know when someone is trying to XSS you or you made an oversight.</p>

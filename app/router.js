@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('video');
   this.route('font');
   this.route('deadman');
+  this.route('how-to-install');
 });
 
 export default Router;

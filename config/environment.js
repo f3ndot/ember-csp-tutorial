@@ -18,16 +18,17 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval'",
-      'font-src': "'self' fonts.gstatic.com",
-      'connect-src': "'self'",
-      'img-src': "'self' s.gravatar.com",
-      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
-      'media-src': "'self'",
-      'frame-src': "'self' www.youtube.com"
-    }
+    // COMMENT THIS OUT TO SEE THE VIOLATIONS
+    // contentSecurityPolicy: {
+    //   'default-src': "'none'",
+    //   'script-src': "'self' 'unsafe-eval'",
+    //   'font-src': "'self' fonts.gstatic.com",
+    //   'connect-src': "'self' justinbull.ca",
+    //   'img-src': "'self' s.gravatar.com",
+    //   'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
+    //   'media-src': "'self'",
+    //   'frame-src': "'self' www.youtube.com"
+    // }
   };
 
   if (environment === 'development') {

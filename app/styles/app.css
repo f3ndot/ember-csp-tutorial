@@ -3,6 +3,10 @@ html, body {
   text-align: center;
 }
 
+img {
+  max-width: 100%;
+}
+
 .container {
   width: 960px;
   margin: auto;
