@@ -5,6 +5,8 @@ A demo Ember CLI app with CSP.
 
 Simply run the app and check it out to learn all about Content Security Policy!
 
+If you're lazy you can [visit the app on my website](https://www.justinbull.ca/private/csp). But the CSP logs will be absent!
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
